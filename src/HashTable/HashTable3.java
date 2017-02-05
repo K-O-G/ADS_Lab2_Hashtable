@@ -16,6 +16,10 @@ public class HashTable3 {
 
     public boolean insert(Section HashObject){
         int index=(HashObject.angleOX()% HashTableArray.length);
+        for (int i = 0; i < HashTableArray.length; i++) {
+            if (HashTableArray[i].equals(HashObject))
+                return false;
+        }
         if (HashTableArray[index]!=null){
             boolean flag = false;
             for (int i = index; i < HashTableArray.length; i++) {

@@ -17,9 +17,27 @@ public class HashTable2 {
     public boolean insert(Section HashObject){
         //Section HashObject = new Section();
         //search index
-        int index=(int)(HashObject.angleOX()% HashTableArray.length);
-        if (HashTableArray[index]==null){
-            return false;
+        int index=(HashObject.angleOX()% HashTableArray.length);
+        for (int i = 0; i < HashTableArray.length; i++) {
+            if (HashTableArray[i].equals(HashObject))
+                return false;
+        }
+        if (HashTableArray[index]!=null){
+            boolean flag = false;
+            for (int i = index; i < HashTableArray.length; i++) {
+                int tempIndex = (index+i)%HashTableArray.length;
+                if (HashTableArray[tempIndex]== null){
+                    HashTableArray[tempIndex]= HashObject;
+                    return true;
+                }
+                if (i==HashTableArray.length-1){
+                    i=0;
+                    flag=true;
+                }
+                if (i == index && flag == true) {
+                    return false;
+                }
+            }
         }
         HashTableArray[index]=HashObject;
         return true;
@@ -28,10 +46,10 @@ public class HashTable2 {
     public void printHashTable(){
         for (int i = 0; i < HashTableArray.length; i++) {
             if (HashTableArray[i]==null) {
-                System.out.printf("%3d %s", i, "Position is null");
+                System.out.printf("%3d %s\n", i, "Position is null");
             }
             else{
-                System.out.printf("%3d %5d %s", i, HashTableArray[i].angleOX(), HashTableArray[i].toString());
+                System.out.printf("%3d %5d %s\n", i, HashTableArray[i].angleOX(), HashTableArray[i].toString());
             }
         }
     }
