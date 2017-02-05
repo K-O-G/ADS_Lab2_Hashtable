@@ -43,4 +43,31 @@ public class Section {
             else return (int)(fi);
         }
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Section section = (Section) o;
+
+//        if (A != null ? !A.equals(section.A) : section.A != null) return false;
+//        return B != null ? B.equals(section.B) : section.B == null;
+        if (((Section) o).getA().getX()==A.getX()&&
+                ((Section) o).getA().getY()==A.getY()&&
+                ((Section) o).getB().getX()==B.getX()&&
+                ((Section) o).getB().getY()==B.getY()){
+            return true;
+        }
+        return false;
+    }
+
+
+    public Dot getA() {
+        return A;
+    }
+
+    public Dot getB() {
+        return B;
+    }
 }
