@@ -1,8 +1,6 @@
 package HashElement;
 
-/**
- * Created by Home on 04.02.2017.
- */
+
 public class Dot {
     final int x,y;
 

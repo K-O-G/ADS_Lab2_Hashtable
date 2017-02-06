@@ -1,8 +1,6 @@
 package HashElement;
 
-/**
- * Created by Home on 04.02.2017.
- */
+
 public class Section {
     Dot A;
     Dot B;
@@ -46,8 +44,8 @@ public class Section {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
 
         Section section = (Section) o;
 
