@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        level3();
+        level2();
     }
 
     public static void level1()
@@ -40,7 +40,7 @@ public class Main {
         }
         hashTable.printHashTable();
         System.out.println("Delete");
-        hashTable.delete(50);
+        hashTable.delete(30);
         hashTable.printHashTable();
     }
 }
