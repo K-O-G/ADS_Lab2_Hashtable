@@ -14,41 +14,33 @@ public class HashTable2 {
     public boolean insert(Section HashObject) {
 
         int index = HashFunction(HashObject);
-        for (int i = 0; i < HashTableArray.length; i++) {
-            if (HashTableArray[i] != null) {
-                if (HashTableArray[i].equals(HashObject))
-                    return false;
-            }
-
-
-            if (HashTableArray[index] != null) {
-                Integer tempIndex = Colision(index);
-                if (tempIndex == null) {
-                    return false;
-                } else index = (int) tempIndex;
-            }
+        if (HashTableArray[index]==null){
+            HashTableArray[index]=HashObject;
+            return true;
         }
-        HashTableArray[index] = HashObject;
-        return true;
+        else if (HashTableArray[index].equals(HashObject)){
+            return false;
+        }
+        else {
+            if (Colision(HashObject)==true)
+                return true;
+            else return false;
+        }
     }
 
-    public Integer Colision(int index) {
-        boolean flag = false;
+    public Boolean Colision(Section HashObject) {
         Integer tempIndex = null;
-        for (int i = index; i < HashTableArray.length; i++) {
-            tempIndex = ((index + i) % HashTableArray.length);
+        for (int i = 1; i < size; i++) {
+            tempIndex = ((HashObject.angleOX() + i) % HashTableArray.length);
             if (HashTableArray[tempIndex] == null) {
-                return tempIndex;
+                HashTableArray[tempIndex]=HashObject;
+                return true;
             }
-            if (i == HashTableArray.length - 1) {
-                i = 0;
-                flag = true;
-            }
-            if (i == index && flag == true) {
-                return null;
+            else if (HashTableArray[tempIndex].equals(HashObject)){
+                return false;
             }
         }
-        return tempIndex;
+        return false;
     }
 
     private int HashFunction(Section HashObject) {
